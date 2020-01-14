@@ -63,6 +63,7 @@ public class ServerBootStrap extends AbstractBootStrap {
         return new ChannelHandler[]{
                 new RequestDecoder(),
                 new ResponseEncoder(),
+                new ServerTestHandler()
         };
     }
 

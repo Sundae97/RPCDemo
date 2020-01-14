@@ -1,14 +1,16 @@
 package com.sundae.client;
 
 import com.sundae.AbstractBootStrap;
+import com.sundae.KryoUtil;
+import com.sundae.ProtocolData;
+import com.sundae.TestBean;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 /**
  * ClientBootstarp
@@ -27,29 +29,49 @@ public class ClientBootStrap extends AbstractBootStrap {
         try{
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(workerLoopGroup)
+                    .handler(new LoggingHandler(LogLevel.DEBUG))
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-
+                            socketChannel.pipeline().addLast(getBuiltInHandlers());
+                            socketChannel.pipeline().addLast(getCustomHandlers());
                         }
                     })
-                    .option(ChannelOption.SO_KEEPALIVE, true);
-            bootstrap.connect(REMOTE_HOST, PORT);
-        }finally {
+                    .option(ChannelOption.TCP_NODELAY, true);
+            ChannelFuture channelFuture = bootstrap.connect(REMOTE_HOST, PORT).sync();
+            TestBean testBean = new TestBean();
+            testBean.setId(6);
+            testBean.setName("xiaoming");
+            testBean.setAdmin(true);
+            byte[] bytes = KryoUtil.doSerialize(testBean);
+            TestBean t = KryoUtil.doDeserialize(bytes, TestBean.class);
+            System.out.println(t.toString());
+            System.out.println(new String(bytes));
+
+            ProtocolData protocolData = new ProtocolData();
+            protocolData.setBodyData(bytes);
+            channelFuture.channel().writeAndFlush(protocolData);
+            channelFuture.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
             workerLoopGroup.shutdownGracefully();
         }
     }
 
     protected ChannelHandler[] getBuiltInHandlers() {
         return new ChannelHandler[]{
-
+//                new ByteArrayDecoder(),
+//                new ByteArrayEncoder(),
         };
     }
 
     protected ChannelHandler[] getCustomHandlers() {
         return new ChannelHandler[]{
-
+                new RequestEncoder(),
+                new ResponseDecoder(),
+                new TestSendHandler()
         };
     }
 }

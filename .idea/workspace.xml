@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de1fb860-80c6-462f-aba2-48fb2154c71b" name="Default Changelist" comment="" />
+    <list default="true" id="de1fb860-80c6-462f-aba2-48fb2154c71b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/KryoUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/ProtocolData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/TestBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethodImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/TestSendHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerTestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientBootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientBootStrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/RequestEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/RequestEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/ResponseDecode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ResponseDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/RequestDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/RequestDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ResponseEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ResponseEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerBootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerBootStrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/NettyBootstrap$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/NettyBootstrap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/RequestDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/RequestDecoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/ResponseEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/ResponseEncoder.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,12 +35,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WMv3pjzfGLVvpnP0QNiDnX6Iho" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -23,6 +52,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -32,7 +62,20 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ServerMain">
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sundae.client.ClientMain" />
+      <module name="RPCDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sundae.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sundae.server.ServerMain" />
       <module name="RPCDemo" />
@@ -48,6 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientMain" />
         <item itemvalue="Application.ServerMain" />
       </list>
     </recent_temporary>
@@ -75,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1578972081522</updated>
       <workItem from="1578972099221" duration="2856000" />
-      <workItem from="1578974963863" duration="637000" />
+      <workItem from="1578974963863" duration="11767000" />
     </task>
     <servers />
   </component>
@@ -91,26 +135,50 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="728" y="165" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578972132127" />
-    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1578975515565">
+    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1578988099955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578975515565" />
-    <state width="1427" height="236" key="GridCell.Tab.0.bottom" timestamp="1578974957639">
+    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1578988099955" />
+    <state x="892" y="411" width="503" height="343" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578982544107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578974957639" />
-    <state width="1427" height="236" key="GridCell.Tab.0.center" timestamp="1578974957639">
+    <state x="892" y="411" width="503" height="343" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1578982544107" />
+    <state width="542" height="582" key="DebuggerActiveHint" timestamp="1578986869532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578974957639" />
-    <state width="1427" height="236" key="GridCell.Tab.0.left" timestamp="1578974957638">
+    <state width="542" height="582" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1578986869532" />
+    <state width="1427" height="236" key="GridCell.Tab.0.bottom" timestamp="1578986924525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578974957638" />
-    <state width="1427" height="236" key="GridCell.Tab.0.right" timestamp="1578974957639">
+    <state width="1427" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924525" />
+    <state width="1427" height="236" key="GridCell.Tab.0.center" timestamp="1578986924525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578974957639" />
+    <state width="1427" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924525" />
+    <state width="1427" height="236" key="GridCell.Tab.0.left" timestamp="1578986924525">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924525" />
+    <state width="1427" height="236" key="GridCell.Tab.0.right" timestamp="1578986924525">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924525" />
+    <state width="1427" height="293" key="GridCell.Tab.1.bottom" timestamp="1578986924523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="293" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924523" />
+    <state width="1427" height="293" key="GridCell.Tab.1.center" timestamp="1578986924523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="293" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924523" />
+    <state width="1427" height="293" key="GridCell.Tab.1.left" timestamp="1578986924523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="293" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924523" />
+    <state width="1427" height="293" key="GridCell.Tab.1.right" timestamp="1578986924523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1427" height="293" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578986924523" />
     <state x="440" y="78" key="SettingsEditor" timestamp="1578975199127">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -119,5 +187,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="244" y="252" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1578972127309" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sundae/server/RequestDecoder.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

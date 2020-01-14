@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2020/1/14
  * @comment
  */
-public class ResponseDecode extends ByteToMessageDecoder {
+public class ResponseDecoder extends ByteToMessageDecoder {
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
 
     }
