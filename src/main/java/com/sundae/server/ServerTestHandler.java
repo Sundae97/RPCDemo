@@ -14,7 +14,9 @@ public class ServerTestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println("channelRead --> "+msg);
+        System.out.println("channelRead --> ");
 //        ctx.fireChannelActive();
     }
+
+
 }

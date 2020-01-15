@@ -1,7 +1,5 @@
 package com.sundae.client;
 
-import com.sundae.KryoUtil;
-import com.sundae.TestBean;
 import io.netty.channel.*;
 
 /**

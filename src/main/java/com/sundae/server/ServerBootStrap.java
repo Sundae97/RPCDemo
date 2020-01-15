@@ -1,12 +1,22 @@
 package com.sundae.server;
 
 import com.sundae.AbstractBootStrap;
+import com.sundae.GlobalConfig;
+import com.sundae.service.ServiceBean;
+import com.sundae.service.ServiceProvider;
+import com.sundae.util.ReflectUtil;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.*;
+import io.netty.util.internal.StringUtil;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * NettyBootstrap
@@ -35,7 +45,8 @@ public class ServerBootStrap extends AbstractBootStrap {
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
 
             ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync();
             System.out.println("service started");
@@ -65,6 +76,26 @@ public class ServerBootStrap extends AbstractBootStrap {
                 new ResponseEncoder(),
                 new ServerTestHandler()
         };
+    }
+
+    public void addServiceProvider(ServiceProvider serviceProvider){
+        Class interfaceClz = serviceProvider.getInterfaceClz();
+        Method[] methods = interfaceClz.getDeclaredMethods();
+        System.out.println(System.currentTimeMillis());
+        for (Method m : methods) {
+            String methodDescription = ReflectUtil.getMethodDescription(m);
+
+            ServiceBean serviceBean = new ServiceBean();
+            serviceBean.setInstance(serviceProvider.getImplObject());
+            serviceBean.setMethod(m);
+            serviceBean.setMethodDescription(methodDescription);
+
+            System.out.println(methodDescription);
+
+            GlobalConfig.methodHashMap.put(methodDescription, serviceBean);
+        }
+        System.out.println(System.currentTimeMillis());
+
     }
 
 }

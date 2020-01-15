@@ -15,4 +15,6 @@ public interface TestMethod {
 
     String test2();
 
+    TestBean test3(String a, int b, boolean c);
+
 }

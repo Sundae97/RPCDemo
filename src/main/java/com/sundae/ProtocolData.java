@@ -13,6 +13,14 @@ public class ProtocolData {
 
     private byte[] bodyData;
 
+    public ProtocolData() {
+    }
+
+    public ProtocolData(String version, byte[] bodyData) {
+        this.version = version;
+        this.bodyData = bodyData;
+    }
+
     public String getVersion() {
         return version;
     }

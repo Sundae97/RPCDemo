@@ -22,4 +22,14 @@ public class TestMethodImpl implements TestMethod {
     public String test2() {
         return "hello ---> test2";
     }
+
+    @Override
+    public TestBean test3(String a, int b, boolean c) {
+        TestBean testBean = new TestBean();
+        testBean.setId(b);
+        testBean.setName(a);
+        testBean.setAdmin(c);
+        System.out.println(testBean.toString());
+        return testBean;
+    }
 }
