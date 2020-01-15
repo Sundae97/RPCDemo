@@ -25,6 +25,7 @@ public class ClientBootStrap extends AbstractBootStrap {
     private static final String REMOTE_HOST = "localhost";
     private static final int PORT = 8899;
     private EventLoopGroup workerLoopGroup = new NioEventLoopGroup();
+    public static TestSendHandler testSendHandler = new TestSendHandler();
 
     public void bootstrap(){
         try{
@@ -78,7 +79,7 @@ public class ClientBootStrap extends AbstractBootStrap {
         return new ChannelHandler[]{
                 new RequestEncoder(),
                 new ResponseDecoder(),
-//                new TestSendHandler()
+                testSendHandler
         };
     }
 }

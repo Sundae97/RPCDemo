@@ -22,9 +22,9 @@ public class ClientMain {
                 TimeUnit.SECONDS.sleep(0);
                 testMethod.test1("HHH");
                 TimeUnit.SECONDS.sleep(0);
-                testMethod.test2();
+                System.out.println("testMethod.test2() ---> " + testMethod.test2());
                 TimeUnit.SECONDS.sleep(0);
-                testMethod.test3("AAA", 23, false);
+                System.out.println("testMethod.test3(String, int, boolean) ---> " + testMethod.test3("AAA", 23, false));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

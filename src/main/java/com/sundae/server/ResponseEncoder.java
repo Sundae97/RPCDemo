@@ -15,6 +15,8 @@ import io.netty.handler.codec.MessageToByteEncoder;
 public class ResponseEncoder extends MessageToByteEncoder<ProtocolData> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, ProtocolData protocolData, ByteBuf out) throws Exception {
+        out.writeInt(protocolData.getBodyData().length);
         out.writeBytes(protocolData.getBodyData());
+        System.out.println("server -- body length = " + protocolData.getBodyData().length);
     }
 }

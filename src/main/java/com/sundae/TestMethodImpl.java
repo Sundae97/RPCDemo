@@ -1,5 +1,7 @@
 package com.sundae;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * TestMethodImpl
  *
@@ -20,6 +22,11 @@ public class TestMethodImpl implements TestMethod {
 
     @Override
     public String test2() {
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "hello ---> test2";
     }
 

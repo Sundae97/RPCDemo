@@ -1,4 +1,4 @@
-package com.sundae;
+package com.sundae.service;
 
 import java.util.Arrays;
 

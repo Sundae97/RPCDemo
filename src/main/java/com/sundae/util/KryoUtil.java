@@ -4,6 +4,9 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.sundae.TestBean;
+import com.sundae.server.Response;
+import com.sundae.service.ServiceRemoteInvokeBean;
+import com.sundae.service.ServiceResultBean;
 
 /**
  * KryoUtil
@@ -17,7 +20,15 @@ public class KryoUtil {
     static final ThreadLocal<Kryo> KRYO_THREAD_LOCAL = new ThreadLocal<Kryo>(){
         @Override
         protected Kryo initialValue() {
-            return new Kryo();
+            Kryo kryo = new Kryo();
+            kryo.register(ServiceRemoteInvokeBean.class);
+            kryo.register(ServiceResultBean.class);
+            kryo.register(Response.class);
+            kryo.register(Object[].class);
+            kryo.register(Object.class);
+            kryo.register(byte[].class);
+            kryo.register(TestBean.class);
+            return kryo;
         }
     };
 
@@ -26,16 +37,12 @@ public class KryoUtil {
     }
 
     public static byte[] doSerialize(Object object) {
-        getKryo().register(object.getClass());
-        getKryo().register(Object[].class);
         Output output = new Output(1024, -1);
         getKryo().writeObject(output, object);
         return output.toBytes();
     }
 
     public static <T> T doDeserialize(byte[] bytes, Class<T> typeClass) {
-        getKryo().register(typeClass);
-        getKryo().register(Object[].class);
         Input input = new Input(bytes);
         return getKryo().readObject(input, typeClass);
     }

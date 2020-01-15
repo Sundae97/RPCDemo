@@ -2,37 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de1fb860-80c6-462f-aba2-48fb2154c71b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/GlobalConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/ServiceRemoteInvokeBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ServiceProxyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceInvokeHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/util/ReflectUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceResultBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sundae/util/ProtocolUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/KryoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/util/KryoUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/ProtocolData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/ProtocolData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/ServiceRemoteInvokeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceRemoteInvokeBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethodImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/TestMethodImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientBootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientBootStrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/RequestEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/RequestEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/ResponseDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/ResponseDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/client/TestSendHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/client/TestSendHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/RequestDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/RequestDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerBootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerBootStrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerTestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ServerTestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/KryoUtil$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/KryoUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/server/ResponseEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/server/ResponseEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceInvokeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/service/ServiceInvokeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sundae/util/KryoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sundae/util/KryoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/ServiceRemoteInvokeBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/TestMethodImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/TestMethodImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/ClientBootStrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/client/ClientBootStrap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/ClientMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/client/ClientMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/RequestEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/client/RequestEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/ResponseDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/client/ResponseDecoder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/client/TestSendHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/client/TestSendHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/RequestDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/RequestDecoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerBootStrap$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerBootStrap$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerBootStrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerBootStrap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/ServerMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/server/ResponseEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/server/ResponseEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/service/ServiceInvokeHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/service/ServiceInvokeHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/util/KryoUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/util/KryoUtil$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sundae/util/KryoUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sundae/util/KryoUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +123,7 @@
       <updated>1578972081522</updated>
       <workItem from="1578972099221" duration="2856000" />
       <workItem from="1578974963863" duration="13052000" />
-      <workItem from="1579049139154" duration="12321000" />
+      <workItem from="1579049139154" duration="24117000" />
     </task>
     <servers />
   </component>
@@ -156,10 +152,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="728" y="165" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578972132127" />
-    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1579057664823">
+    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1579075678589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579057664823" />
+    <state x="977" y="217" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579075678589" />
     <state x="892" y="411" width="503" height="343" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578982544107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -168,22 +164,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="617" height="582" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1579052347745" />
-    <state width="1427" height="236" key="GridCell.Tab.0.bottom" timestamp="1579061587561">
+    <state width="1427" height="236" key="GridCell.Tab.0.bottom" timestamp="1579076503866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579061587561" />
-    <state width="1427" height="236" key="GridCell.Tab.0.center" timestamp="1579061587561">
+    <state width="1427" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579076503866" />
+    <state width="1427" height="236" key="GridCell.Tab.0.center" timestamp="1579076503866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579061587561" />
-    <state width="1427" height="236" key="GridCell.Tab.0.left" timestamp="1579061587561">
+    <state width="1427" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579076503866" />
+    <state width="1427" height="236" key="GridCell.Tab.0.left" timestamp="1579076503866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579061587561" />
-    <state width="1427" height="236" key="GridCell.Tab.0.right" timestamp="1579061587561">
+    <state width="1427" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579076503866" />
+    <state width="1427" height="236" key="GridCell.Tab.0.right" timestamp="1579076503866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1427" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579061587561" />
+    <state width="1427" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579076503866" />
     <state width="1427" height="293" key="GridCell.Tab.1.bottom" timestamp="1579057867357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -222,7 +218,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sundae/client/ClientBootStrap.java</url>
-          <line>45</line>
+          <line>46</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
