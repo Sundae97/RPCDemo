@@ -78,6 +78,7 @@ public class ServerBootStrap extends AbstractBootStrap {
         };
     }
 
+//    -------------------------------------------------------------------------
     public void addServiceProvider(ServiceProvider serviceProvider){
         Class interfaceClz = serviceProvider.getInterfaceClz();
         Method[] methods = interfaceClz.getDeclaredMethods();
@@ -95,7 +96,13 @@ public class ServerBootStrap extends AbstractBootStrap {
             GlobalConfig.methodHashMap.put(methodDescription, serviceBean);
         }
         System.out.println(System.currentTimeMillis());
-
     }
+
+
+    public void register2Zookeeper(ServiceProvider serviceProvider){
+//        serviceProvider.getInterfaceClz().getCanonicalName();
+    }
+
+//    -------------------------------------------------------------------------
 
 }
