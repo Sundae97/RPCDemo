@@ -17,17 +17,17 @@ import com.sundae.service.ServiceResultBean;
  */
 public class KryoUtil {
 
-    static final ThreadLocal<Kryo> KRYO_THREAD_LOCAL = new ThreadLocal<Kryo>(){
+    public static class Config{
+        public static boolean REGISTRATION_REQUIRED = false;
+        public static boolean WARN_UNREGISTERED_CLASSES = true;
+    }
+
+    private static final ThreadLocal<Kryo> KRYO_THREAD_LOCAL = new ThreadLocal<Kryo>(){
         @Override
         protected Kryo initialValue() {
             Kryo kryo = new Kryo();
-            kryo.register(ServiceRemoteInvokeBean.class);
-            kryo.register(ServiceResultBean.class);
-            kryo.register(Response.class);
-            kryo.register(Object[].class);
-            kryo.register(Object.class);
-            kryo.register(byte[].class);
-            kryo.register(TestBean.class);
+            kryo.setRegistrationRequired(Config.REGISTRATION_REQUIRED);
+            kryo.setWarnUnregisteredClasses(Config.WARN_UNREGISTERED_CLASSES);
             return kryo;
         }
     };

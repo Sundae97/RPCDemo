@@ -34,7 +34,7 @@ public class TestSendHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         // super.exceptionCaught(ctx, cause);
-        System.out.println("exceptionCaught ------> " + cause.toString());
+        System.err.println("exceptionCaught ------> " + cause.toString());
     }
 
     public synchronized ChannelPromise sendMessage(ProtocolData protocolData){

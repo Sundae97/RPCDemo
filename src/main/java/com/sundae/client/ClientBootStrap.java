@@ -45,21 +45,7 @@ public class ClientBootStrap extends AbstractBootStrap {
                     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
             ChannelFuture channelFuture = bootstrap.connect(REMOTE_HOST, PORT).sync();
             Config.channel = channelFuture.channel();
-            //TODO 以下为测试代码 等待删除
-//            TestBean testBean = new TestBean();
-//            testBean.setId(6);
-//            testBean.setName("xiaoming");
-//            testBean.setAdmin(true);
-//            byte[] bytes = KryoUtil.doSerialize(testBean);
-//            TestBean t = KryoUtil.doDeserialize(bytes, TestBean.class);
-//
-//            System.out.println(t.toString());
-//            System.out.println(new String(bytes));
-//
-//            ProtocolData protocolData = new ProtocolData();
-//            protocolData.setBodyData(bytes);
-//            channelFuture.channel().writeAndFlush(protocolData);
-            channelFuture.channel().closeFuture().sync();
+            channelFuture.channel().closeFuture().sync();       //TODO Test 统一存放Channel
             System.out.println("close channel");
         } catch (InterruptedException e) {
             e.printStackTrace();

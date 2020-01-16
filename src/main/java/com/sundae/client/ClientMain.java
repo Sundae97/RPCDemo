@@ -1,6 +1,7 @@
 package com.sundae.client;
 
 import com.sundae.TestMethod;
+import com.sundae.util.KryoUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 public class ClientMain {
 
     public static void main(String[] args) throws InterruptedException {
+        KryoUtil.Config.REGISTRATION_REQUIRED = false;      //允许不注册进行使用Kryo
+        KryoUtil.Config.WARN_UNREGISTERED_CLASSES = false;   //序列化未注册Class的时候输出警告
         new Thread(()->{
             try {
                 TimeUnit.SECONDS.sleep(3);

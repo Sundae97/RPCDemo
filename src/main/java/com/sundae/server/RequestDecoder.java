@@ -37,7 +37,8 @@ public class RequestDecoder extends ByteToMessageDecoder {
 //        byteBuf.readBytes(msg);
 //        TestBean testBean = KryoUtil.doDeserialize(msg, TestBean.class);
 //        System.out.println("TestBean ---> \n" + testBean.toString());
-        //TODO 增加head解析，判断长度是否符合读取要求
+
+        //增加head解析，判断长度是否符合读取要求
         byte[] msg = ProtocolUtil.extractProtocolData(byteBuf);
 
         if(msg == null) return;
