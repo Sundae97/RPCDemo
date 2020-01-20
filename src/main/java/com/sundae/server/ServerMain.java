@@ -27,6 +27,7 @@ public class ServerMain {
         //TODO 初始化扫x描暴露的服务，创建Map ，创建线程池
         //TODO 调用方法
 
+        //TODO 负载均衡策略   轮询 加权轮询 随机 哈希
         //TODO 多服务提供者，多zk注册中心
         //TODO 注册中心目录结构 /path/ClassCanonicalName/Version/ProviderInfo
     }

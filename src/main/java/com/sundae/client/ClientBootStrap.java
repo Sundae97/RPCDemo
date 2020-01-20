@@ -25,6 +25,12 @@ public class ClientBootStrap extends AbstractBootStrap {
     private EventLoopGroup workerLoopGroup = new NioEventLoopGroup();
     public static TestSendHandler testSendHandler = new TestSendHandler();
 
+    private static final ClientBootStrap singleton = new ClientBootStrap();
+
+    public static ClientBootStrap getSingleton() {
+        return singleton;
+    }
+
     public void bootstrap(){
         try{
             clientBootstarp.group(workerLoopGroup)

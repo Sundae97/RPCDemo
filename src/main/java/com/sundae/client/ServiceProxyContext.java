@@ -1,7 +1,11 @@
 package com.sundae.client;
 
-import com.sundae.service.ServiceMethodProvider;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * ServiceProxyContext
@@ -12,9 +16,23 @@ import io.netty.channel.Channel;
  */
 public class ServiceProxyContext {
 
+    /**
+     * 创建链路
+     * @param serviceProvider
+     * @return
+     */
     public Channel createChannel(ServiceProvider serviceProvider){
+        Collection<Channel> channelCollection = Config.providerChannelsMap.get(serviceProvider);
+        if(channelCollection == null)
+            channelCollection = new HashSet<>();
         //TODO　connect server and save channel
-        return null;
+        ChannelFuture channelFuture = ClientBootStrap.getSingleton().connect(
+                serviceProvider.getInetHost(),
+                serviceProvider.getInetPort()
+        );
+        Channel channel = channelFuture.channel();
+        channelCollection.add(channel);
+        return channel;
     }
 
 }
