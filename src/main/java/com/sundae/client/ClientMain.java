@@ -1,6 +1,6 @@
 package com.sundae.client;
 
-import com.sundae.TestMethod;
+import com.sundae.provider.TestMethod;
 import com.sundae.util.KryoUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -36,7 +36,7 @@ public class ClientMain {
 
         new ClientBootStrap().bootstrap();
 
-
+        //添加zk注册中心配置，初始化连接缓存配置
     }
 
 }

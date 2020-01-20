@@ -100,6 +100,16 @@ public class ZookeeperRegistryManager {
         return true;
     }
 
+    public boolean deleteNode(String path){
+        try {
+            client.delete().forPath(path);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     /**
      * 递归删除子节点(包括目录下的节点)
      * @param path

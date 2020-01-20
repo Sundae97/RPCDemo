@@ -3,10 +3,6 @@ package com.sundae.util;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.sundae.TestBean;
-import com.sundae.server.Response;
-import com.sundae.service.ServiceRemoteInvokeBean;
-import com.sundae.service.ServiceResultBean;
 
 /**
  * KryoUtil

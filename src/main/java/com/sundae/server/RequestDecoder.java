@@ -46,6 +46,7 @@ public class RequestDecoder extends ByteToMessageDecoder {
         ServiceRemoteInvokeBean remoteInvokeBean = KryoUtil.doDeserialize(msg, ServiceRemoteInvokeBean.class);
         System.out.println("server -- decode --> " + remoteInvokeBean.toString());
         ServiceBean serviceBean = GlobalConfig.methodHashMap.get(remoteInvokeBean.getMethodDescription());
+        //TODO if(serviceBean == null)  直接返回
         Method method = serviceBean.getMethod();
         Object instance = serviceBean.getInstance();
         Object[] args = remoteInvokeBean.getArgs();

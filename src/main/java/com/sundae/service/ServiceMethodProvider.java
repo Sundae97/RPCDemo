@@ -7,12 +7,12 @@ package com.sundae.service;
  * @date 2020/1/15
  * @comment
  */
-public class ServiceProvider {
+public class ServiceMethodProvider {
 
     private Class interfaceClz;
     private Object implObject;
 
-    public ServiceProvider(Class interfaceClz, Object implObject) {
+    public ServiceMethodProvider(Class interfaceClz, Object implObject) {
         this.interfaceClz = interfaceClz;
         this.implObject = implObject;
     }

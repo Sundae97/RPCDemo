@@ -1,4 +1,4 @@
-package com.sundae;
+package com.sundae.provider;
 
 /**
  * TestMethod
@@ -7,7 +7,7 @@ package com.sundae;
  * @date 2020/1/14
  * @comment
  */
-public interface TestMethod {
+public interface TestMethod2 {
 
     void test1();
 

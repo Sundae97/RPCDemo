@@ -1,4 +1,4 @@
-package com.sundae;
+package com.sundae.provider;
 
 /**
  * TestBean

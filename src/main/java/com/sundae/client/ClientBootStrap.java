@@ -1,9 +1,6 @@
 package com.sundae.client;
 
 import com.sundae.AbstractBootStrap;
-import com.sundae.util.KryoUtil;
-import com.sundae.ProtocolData;
-import com.sundae.TestBean;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -22,6 +19,7 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class ClientBootStrap extends AbstractBootStrap {
 
+    private Bootstrap clientBootstarp = new Bootstrap();
     private static final String REMOTE_HOST = "localhost";
     private static final int PORT = 8899;
     private EventLoopGroup workerLoopGroup = new NioEventLoopGroup();
@@ -29,8 +27,7 @@ public class ClientBootStrap extends AbstractBootStrap {
 
     public void bootstrap(){
         try{
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(workerLoopGroup)
+            clientBootstarp.group(workerLoopGroup)
                     .handler(new LoggingHandler(LogLevel.DEBUG))
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
@@ -43,7 +40,7 @@ public class ClientBootStrap extends AbstractBootStrap {
                     .option(ChannelOption.TCP_NODELAY, true)
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
-            ChannelFuture channelFuture = bootstrap.connect(REMOTE_HOST, PORT).sync();
+            ChannelFuture channelFuture = clientBootstarp.connect(REMOTE_HOST, PORT).sync();
             Config.channel = channelFuture.channel();
             channelFuture.channel().closeFuture().sync();       //TODO Test 统一存放Channel
             System.out.println("close channel");
@@ -52,6 +49,10 @@ public class ClientBootStrap extends AbstractBootStrap {
         } finally {
 //            workerLoopGroup.shutdownGracefully();
         }
+    }
+
+    public ChannelFuture connect(String inetHost, int inetPort){
+        return clientBootstarp.connect(inetHost, inetPort);
     }
 
     protected ChannelHandler[] getBuiltInHandlers() {
