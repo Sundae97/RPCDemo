@@ -3,8 +3,12 @@ package com.sundae.registry;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.CuratorEvent;
+import org.apache.curator.framework.api.CuratorListener;
 import org.apache.curator.framework.recipes.cache.NodeCache;
 import org.apache.curator.framework.recipes.cache.NodeCacheListener;
+import org.apache.curator.framework.recipes.cache.TreeCache;
+import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -30,9 +34,13 @@ public class ZookeeperRegistryManager {
 //    }
 
     public void connectZooKeeper(String host, int port) {
+        connectZooKeeper(host, port, null);
+    }
+
+    public void connectZooKeeper(String host, int port, String namespace) {
         client = CuratorFrameworkFactory.builder()
                 .connectString(host+":"+port)
-                .namespace("sundae")
+                .namespace(namespace)
                 .retryPolicy(retryPolicy)
                 .sessionTimeoutMs(3000)
                 .build();
@@ -40,6 +48,12 @@ public class ZookeeperRegistryManager {
         System.out.println("zookeeper connect success");
     }
 
+    /**
+     * 创建节点，如果节点存在就会抛出 NodeExistsException
+     * @param path
+     * @param data
+     * @return
+     */
     public boolean createNode(String path,String data) {
         try {
             client.create()
@@ -53,6 +67,23 @@ public class ZookeeperRegistryManager {
         return true;
     }
 
+    /**
+     * 当节点不存在时创建节点 如果存在直接返回true
+     * @param path
+     * @param data
+     * @return
+     */
+    public boolean createNodeIfNotExist(String path,String data) {
+        if(isExist(path))
+            return true;
+        return createNode(path, data);
+    }
+
+    /**
+     * 判断节点是否存在
+     * @param path
+     * @return
+     */
     public boolean isExist(String path) {
         try {
             Stat stat = client.checkExists().forPath(path);
@@ -65,6 +96,11 @@ public class ZookeeperRegistryManager {
     }
 
 
+    /**
+     * 获取path下所有节点
+     * @param path
+     * @return
+     */
     public List<String> getChildren(String path) {
         List<String> list = null;
         try {
@@ -75,6 +111,11 @@ public class ZookeeperRegistryManager {
         return list;
     }
 
+    /**
+     * 获取节点数据
+     * @param path
+     * @return
+     */
     public String getNodeData(String path) {
         try {
             byte[] data = client.getData().forPath(path);
@@ -86,6 +127,12 @@ public class ZookeeperRegistryManager {
     }
 
 
+    /**
+     * 更新节点数据
+     * @param path
+     * @param newValue
+     * @return
+     */
     public boolean updateNodeData(String path, String newValue) {
         //判断节点是否存在
         if (!isExist(path)) {
@@ -100,6 +147,11 @@ public class ZookeeperRegistryManager {
         return true;
     }
 
+    /**
+     * 删除节点 如果节点不存在抛出 NoNodeException
+     * @param path
+     * @return
+     */
     public boolean deleteNode(String path){
         try {
             client.delete().forPath(path);
@@ -111,13 +163,26 @@ public class ZookeeperRegistryManager {
     }
 
     /**
+     * 删除节点(包括子节点) 如果存在删除，否则直接返回true
+     * @param path
+     * @return
+     */
+    public boolean deleteNodeIfExist(String path){
+        if(isExist(path))
+            return deleteChildrenIfNeededNode(path);
+        return true;
+    }
+
+    /**
      * 递归删除子节点(包括目录下的节点)
      * @param path
      * @return
      */
     public boolean deleteChildrenIfNeededNode(String path) {
         try {
-            client.delete().deletingChildrenIfNeeded().forPath(path);
+            client.delete()
+                    .deletingChildrenIfNeeded()
+                    .forPath(path);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -133,17 +198,33 @@ public class ZookeeperRegistryManager {
      * @return 注册结果
      */
     public boolean registerWatcherNodeChanged(String path, NodeCacheListener nodeCacheListener) {
-        NodeCache nodeCache = new NodeCache(client, path, false);
         try {
+            NodeCache nodeCache = new NodeCache(client, path, false);
             nodeCache.getListenable().addListener(nodeCacheListener);
-            nodeCache.start(true);
+            nodeCache.start(false);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
+    public boolean registerWatcherTreeChanged(String path, TreeCacheListener treeCacheListener){
+        try {
+            TreeCache treeCache = new TreeCache(client, path);
+            treeCache.getListenable().addListener(treeCacheListener);
+            treeCache.start();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 关闭连接
+     * @throws InterruptedException
+     */
     public void closeConnection() throws InterruptedException {
         if(client != null)
             client.close();

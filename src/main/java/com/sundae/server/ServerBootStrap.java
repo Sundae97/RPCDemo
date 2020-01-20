@@ -107,7 +107,7 @@ public class ServerBootStrap extends AbstractBootStrap {
         zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT);
         for (ServiceMethodProvider serviceMethodProvider : GlobalConfig.providerList){
             String clzName = serviceMethodProvider.getInterfaceClz().getCanonicalName();
-            zookeeperRegistryManager.createNode(
+            zookeeperRegistryManager.createNodeIfNotExist(
                     "/simpleRPC/server/service/" + clzName + "/" + NetUtil.getLocalAddress() ,
                     ""
             );
