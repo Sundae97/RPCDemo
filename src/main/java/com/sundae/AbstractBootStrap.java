@@ -13,7 +13,7 @@ import io.netty.channel.ChannelHandler;
  */
 public abstract class AbstractBootStrap {
 
-    private ZookeeperRegistryManager zookeeperRegistryManager;
+    protected ZookeeperRegistryManager zookeeperRegistryManager;
 
     public void doBootStrap(){
         initConfig();
@@ -27,7 +27,7 @@ public abstract class AbstractBootStrap {
 
     protected void init(){
         zookeeperRegistryManager = new ZookeeperRegistryManager();
-        zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT);
+        zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT, GlobalConfig.ZOOKEEPER_NAMESPACE);
     }
 
     protected abstract void bootstrap();

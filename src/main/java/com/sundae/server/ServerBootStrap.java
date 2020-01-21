@@ -26,8 +26,6 @@ import java.lang.reflect.Method;
  */
 public class ServerBootStrap extends AbstractBootStrap {
 
-    private ZookeeperRegistryManager zookeeperRegistryManager = new ZookeeperRegistryManager();
-
     private EventLoopGroup bossLoopGroup = new NioEventLoopGroup();
     private EventLoopGroup workerLoopGroup = new NioEventLoopGroup();
 
@@ -35,7 +33,6 @@ public class ServerBootStrap extends AbstractBootStrap {
         //registry to zookeeper
         Config.LOCALHOST_IP = NetUtil.getLocalAddress();
 
-        zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT);
         // start netty
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -109,6 +106,12 @@ public class ServerBootStrap extends AbstractBootStrap {
 
 
     public void register2Zookeeper(){
+        ServerHostInfo serverHostInfo = new ServerHostInfo();
+        serverHostInfo.setIp(Config.LOCALHOST_IP);
+        serverHostInfo.setPort(Config.SELECTED_PORT);
+        zookeeperRegistryManager.createNodeIfNotExist("/server/host/" + JSON.toJSONString(serverHostInfo), "");
+        //公布HOST主机信息 方便服务消费者初始化时从zk上获取并且连接
+
         ProviderHostInfo providerHostInfo = new ProviderHostInfo();
         providerHostInfo.setPort(Config.SELECTED_PORT);
         providerHostInfo.setIp(Config.LOCALHOST_IP);
@@ -118,11 +121,9 @@ public class ServerBootStrap extends AbstractBootStrap {
             String clzName = serviceMethodProvider.getInterfaceClz().getCanonicalName();
             providerHostInfo.setWeight(serviceMethodProvider.getWeight());
             zookeeperRegistryManager.createNodeIfNotExist(
-                    "/simpleRPC/server/service/" + clzName + "/" + JSON.toJSONString(providerHostInfo),
+                    "/server/service/" + clzName + "/" + JSON.toJSONString(providerHostInfo),
                     ""
             );
-            //TODO 节点信息需要添加端口
-            System.out.println(clzName + " ---> registry to zk");
         }
     }
 

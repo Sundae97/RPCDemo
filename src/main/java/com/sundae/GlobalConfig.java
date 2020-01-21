@@ -22,6 +22,7 @@ public class GlobalConfig {
 
     public static String ZOOKEEPER_ADDRESS = "localhost";
     public static int ZOOKEEPER_PORT = 2181;
+    public static final String ZOOKEEPER_NAMESPACE = "SimpleRPC";
 
     //Provider
     public static final HashMap<String, ServiceBean> methodHashMap = new HashMap<>();

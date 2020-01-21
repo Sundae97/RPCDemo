@@ -9,6 +9,7 @@ package com.sundae.server;
  */
 public class Config {
 
+    public static final String ZK_PRE_PATH = "";
     public static String LOCALHOST_IP = null;
     public static final int DEFAULT_PORT = 10000;
     public static int SELECTED_PORT;
