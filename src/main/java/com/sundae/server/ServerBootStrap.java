@@ -1,5 +1,6 @@
 package com.sundae.server;
 
+import com.alibaba.fastjson.JSON;
 import com.sundae.AbstractBootStrap;
 import com.sundae.GlobalConfig;
 import com.sundae.registry.ZookeeperRegistryManager;
@@ -25,8 +26,6 @@ import java.lang.reflect.Method;
  */
 public class ServerBootStrap extends AbstractBootStrap {
 
-    private static final int PORT = 8899;
-
     private ZookeeperRegistryManager zookeeperRegistryManager = new ZookeeperRegistryManager();
 
     private EventLoopGroup bossLoopGroup = new NioEventLoopGroup();
@@ -34,7 +33,9 @@ public class ServerBootStrap extends AbstractBootStrap {
 
     protected void bootstrap() {
         //registry to zookeeper
-        register2Zookeeper();
+        Config.LOCALHOST_IP = NetUtil.getLocalAddress();
+
+        zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT);
         // start netty
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -51,8 +52,12 @@ public class ServerBootStrap extends AbstractBootStrap {
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
                     .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
 
-            ChannelFuture channelFuture = serverBootstrap.bind(PORT).sync();
+            Config.SELECTED_PORT = NetUtil.selectUsablePort(Config.DEFAULT_PORT);
+            System.out.println("selected port -----> " + Config.SELECTED_PORT);
+            ChannelFuture channelFuture = serverBootstrap.bind(Config.SELECTED_PORT).sync();
             System.out.println("service started");
+            register2Zookeeper();
+            System.out.println("register to zk");
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -104,18 +109,21 @@ public class ServerBootStrap extends AbstractBootStrap {
 
 
     public void register2Zookeeper(){
-        zookeeperRegistryManager.connectZooKeeper(GlobalConfig.ZOOKEEPER_ADDRESS, GlobalConfig.ZOOKEEPER_PORT);
+        ProviderHostInfo providerHostInfo = new ProviderHostInfo();
+        providerHostInfo.setPort(Config.SELECTED_PORT);
+        providerHostInfo.setIp(Config.LOCALHOST_IP);
+        providerHostInfo.setUsable(true);
+
         for (ServiceMethodProvider serviceMethodProvider : GlobalConfig.providerList){
             String clzName = serviceMethodProvider.getInterfaceClz().getCanonicalName();
+            providerHostInfo.setWeight(serviceMethodProvider.getWeight());
             zookeeperRegistryManager.createNodeIfNotExist(
-                    "/simpleRPC/server/service/" + clzName + "/" + NetUtil.getLocalAddress() ,
+                    "/simpleRPC/server/service/" + clzName + "/" + JSON.toJSONString(providerHostInfo),
                     ""
             );
             //TODO 节点信息需要添加端口
             System.out.println(clzName + " ---> registry to zk");
         }
-
-
     }
 
 //    -------------------------------------------------------------------------

@@ -58,7 +58,7 @@ public class ZookeeperRegistryManager {
         try {
             client.create()
                     .creatingParentsIfNeeded()  // 如果不存在目录就会遍历创建
-                    .withMode(CreateMode.PERSISTENT)
+                    .withMode(CreateMode.EPHEMERAL)
                     .forPath(path, data.getBytes());
         }catch (Exception e) {
             e.printStackTrace();
@@ -225,7 +225,7 @@ public class ZookeeperRegistryManager {
      * 关闭连接
      * @throws InterruptedException
      */
-    public void closeConnection() throws InterruptedException {
+    public void closeConnection() {
         if(client != null)
             client.close();
     }

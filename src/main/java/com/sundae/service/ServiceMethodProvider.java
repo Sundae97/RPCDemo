@@ -1,5 +1,7 @@
 package com.sundae.service;
 
+import com.sundae.server.ProviderHostInfo;
+
 /**
  * ServiceProvider
  *
@@ -11,10 +13,16 @@ public class ServiceMethodProvider {
 
     private Class interfaceClz;
     private Object implObject;
+    private int weight;
 
     public ServiceMethodProvider(Class interfaceClz, Object implObject) {
+        this(interfaceClz, implObject, 1);
+    }
+
+    public ServiceMethodProvider(Class interfaceClz, Object implObject, int weight) {
         this.interfaceClz = interfaceClz;
         this.implObject = implObject;
+        this.weight = weight;
     }
 
     public Class getInterfaceClz() {
@@ -31,5 +39,22 @@ public class ServiceMethodProvider {
 
     public void setImplObject(Object implObject) {
         this.implObject = implObject;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceMethodProvider{" +
+                "interfaceClz=" + interfaceClz +
+                ", implObject=" + implObject +
+                ", weight=" + weight +
+                '}';
     }
 }

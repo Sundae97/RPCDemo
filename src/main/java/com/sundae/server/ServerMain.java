@@ -2,6 +2,7 @@ package com.sundae.server;
 
 import com.sundae.provider.*;
 import com.sundae.service.ServiceMethodProvider;
+import com.sundae.util.NetUtil;
 
 /**
  * Main
@@ -27,6 +28,7 @@ public class ServerMain {
         //TODO 初始化扫描暴露的服务，创建Map ，创建线程池
         //TODO 调用方法
 
+        //TODO 服务提供者动态选择端口 可以单机部署多个服务提供者
         //TODO 负载均衡策略  --->  轮询 加权轮询 随机 一致性哈希 最小活跃数
         //TODO 多服务提供者，多zk注册中心
         //TODO 注册中心目录结构 /path/ClassCanonicalName/Version/ProviderInfo
