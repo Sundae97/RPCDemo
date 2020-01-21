@@ -3,6 +3,8 @@ package com.sundae.server;
 import com.sundae.provider.*;
 import com.sundae.service.ServiceMethodProvider;
 import com.sundae.util.NetUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Main
@@ -13,7 +15,10 @@ import com.sundae.util.NetUtil;
  */
 public class ServerMain {
 
+    private static Logger logger = LoggerFactory.getLogger(ServerMain.class);
+
     public static void main(String[] args) {
+        logger.warn("start");
         //TODO NETTY 通讯
         ServerBootStrap serverBootStrap = new ServerBootStrap();
 
